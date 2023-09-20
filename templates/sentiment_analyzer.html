@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}SentimentAnalyzer{% endblock title %}
+{% block body %}
+
+
+
+<div class="container">
+      <div class="row">
+          <div class="card mt-100" style="margin-top: 50px">
+            <div class="card-body">
+              <form action="/predict" method="POST">
+                <label> Enter Text </label><br>
+                <input type="text" class="form-control" name="text"> <br>
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="predict">
+              </form> <br>
+             
+            </div>
+          </div>
+
+
+      </div>
+    </div>
+<!-- Optional JavaScript; choose one of the two! -->
+<!--output values-->
+<br>
+<br>
+<br>
+
+<div>
+<div>
+<!--parent div for reports-->
+<div class="row"style="margin-top:10px">
+<div>
+    <!--General sentiment report-->
+   
+<div style="margin-top: 50px">
+    <h1 style="color: white; text-align: center;font-size:50px">Sentiment Report</h1>
+    <div class="alert alert-primary" role="alert" style="height:400px">
+      {% if prediction %}
+      <h2>Prediction: {{ prediction }}</h2>
+      {% endif %}
+
+      <form method="POST" action="/remove-text">
+       <input  type="submit" value="Remove Text">
+    </form>
+    </div>
+</div> 
+<!--end of report-->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+    {% endblock body %}

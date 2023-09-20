@@ -1,0 +1,32 @@
+app.secret_key = os.urandom(24)
+
+#blueprint to call the second python file in the project.
+
+
+# establishing a connection with mysql database made in xampp
+try:
+	conn = mysql.connector.connect(
+		host="localhost", user="root", password="", database="users")
+	cursor = conn.cursor()
+except:
+	print("An exception occurred")
+
+
+
+
+
+@app.route('/add_user', methods=['POST'])
+def add_user():
+
+# get user login data and pass the data to database
+	name = request.form.get('uname')
+	email = request.form.get('uemail')
+	password = request.form.get('upassword')
+	cursor.execute("""INSERT INTO `users` (`Name`,`Email`,`Password`) VALUES ('{}','{}','{}')""".format(
+		name, email, password))
+	conn.commit()
+	cursor.execute(
+		"""SELECT * from `users` WHERE `email` LIKE '{}'""".format(email))
+	myuser = cursor.fetchall()
+	session['Name'] = myuser[0][1]
+	return redirect('/home')

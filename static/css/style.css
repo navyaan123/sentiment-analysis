@@ -1,0 +1,44 @@
+
+.nav-link{
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+
+h1{
+
+    color: rgb(92, 87, 87);
+}
+
+
+#one{
+
+    
+    font-family: 'Times New Roman', Times, serif;
+    font-size:x-large;
+
+}
+
+
+#two{
+
+    
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(19, 20, 19);
+    font-size: x-large;
+    padding:10px;
+    }
+
+
+    #heading{
+
+        display: flex;
+        justify-content: space-between;
+        
+
+    }
+
+
+
